@@ -4,7 +4,6 @@ synopsis:            Haskell Sudoku resolver like Richard Bird's for the Jam de 
 description:         Please see README.md
 homepage:            https://github.com/atrolla/JamHaskellSudoku#readme
 license:             BSD3
-license-file:        LICENSE
 author:              Yvan VU
 maintainer:          yvan.vu@arolla.fr
 copyright:           2016 Atrolla
