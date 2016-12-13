@@ -117,59 +117,25 @@ main = hspec $ do
 --    prop "boxes . boxes = id" $ do
 --      \x -> (boxes . boxes) (toGrid x) == toGrid (x :: SudokuGrid)
 
---  describe "solve2" $ do
---    it "find the solution of a sudoku" $ do
---      solve2 sudokuStep2 `shouldBe` solvedSudokuStep2
+  -- describe "solve2" $ do
+  --   it "find the solution of a sudoku" $ do
+  --     solve sudokuStep2 `shouldBe` solvedSudokuStep2
 
-sudokuStep2 :: Grid
-sudokuStep2 = [
-  "753186942",
-  "914237865",
-  "62859.731",
-  "289.536.7",
-  "375861294",
-  "146729358",
-  "891342576",
-  "462...183",
-  "5376.8429"
-  ]
-
-solvedSudokuStep2 :: Grid
-solvedSudokuStep2 = [
-  "753186942",
-  "914237865",
-  "628594731",
-  "289453617",
-  "375861294",
-  "146729358",
-  "891342576",
-  "462975183",
-  "537618429"
-  ]
-
-
-
-
- 
 -- part 3
 
 
+  describe "complete" $ do
+    it "checks if a matrix of choices contains only singleton" $ do
+      complete ([[[]]]::[[String]]) `shouldBe` False
+      complete [[['1']]] `shouldBe` True
+      complete [[['1','2']]] `shouldBe` False
+      complete [[['1'],['2']]] `shouldBe` True
 
-
-
-
---  describe "complete" $ do
---    it "checks if a matrix of choices contains only singleton" $ do
---      complete ([[[]]]::[[String]]) `shouldBe` False
---      complete [[['1']]] `shouldBe` True
---      complete [[['1','2']]] `shouldBe` False
---      complete [[['1'],['2']]] `shouldBe` True
-
---  describe "safe" $ do
---    it "checks if a matrix of choices contains duplicates" $ do
---      safe ([[[]]]::[[String]]) `shouldBe` True
---      safe [[['1'],['1']]] `shouldBe` False
---      safe [[['1','2']]] `shouldBe` True
+  describe "safe" $ do
+    it "checks if a matrix of choices contains duplicates" $ do
+      safe ([[[]]]::[[String]]) `shouldBe` True
+      safe [[['1'],['1']]] `shouldBe` False
+      safe [[['1','2']]] `shouldBe` True
 
 --  describe "count" $ do -- TODO remove for refacto
 --    it "count the length of the lists inside a matrix of lists" $ do
@@ -177,12 +143,12 @@ solvedSudokuStep2 = [
 --      count [[[1]]] `shouldBe` [1]
 --      count [[[1]],[[2]]] `shouldBe` [1,1]
 
---  describe "minimalChoices" $ do
---    it "find the minimal number > 1 from a matrix of choices" $ do
---      minimalChoices [[['a','a']]] `shouldBe` 2
---      evaluate (minimalChoices ([[[]]]::[[String]])) `shouldThrow` anyException
---      evaluate (minimalChoices [[[1]]]) `shouldThrow` anyException
---      minimalChoices [[['a'..'z'],['1'..'9']]] `shouldBe` 9
+  describe "minimalChoices" $ do
+    it "find the minimal number > 1 from a matrix of choices" $ do
+      minimalChoices [[['a','a']]] `shouldBe` 2
+      evaluate (minimalChoices ([[[]]]::[[String]])) `shouldThrow` anyException
+      evaluate (minimalChoices [[[1]]]) `shouldThrow` anyException
+      minimalChoices [[['a'..'z'],['1'..'9']]] `shouldBe` 9
 
 --  describe "expand" $ do
 --    it "replaces a matrix row containing choices with many matrix of each choices" $ do
@@ -253,6 +219,32 @@ sudokuStep1 = [
 
 solvedSudokuStep1 :: Grid
 solvedSudokuStep1 = [
+  "753186942",
+  "914237865",
+  "628594731",
+  "289453617",
+  "375861294",
+  "146729358",
+  "891342576",
+  "462975183",
+  "537618429"
+  ]
+
+sudokuStep2 :: Grid
+sudokuStep2 = [
+  "753186942",
+  "914237865",
+  "62859.731",
+  "289.536.7",
+  "375861294",
+  "146729358",
+  "891342576",
+  "462...183",
+  "5376.8429"
+  ]
+
+solvedSudokuStep2 :: Grid
+solvedSudokuStep2 = [
   "753186942",
   "914237865",
   "628594731",

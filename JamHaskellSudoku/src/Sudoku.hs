@@ -134,14 +134,16 @@ complete :: Matrix [Digit] -> Bool
 complete = all (all single)
   where
     single :: [a] -> Bool
-    single = undefined -- TODO
+    single a = (length a) == 1 -- TODO
 
 safe :: Matrix [Digit] -> Bool
-safe = undefined -- TODO (almost like correct)
+safe = all noDuplicates
 
 minimalChoices :: [[[a]]] -> Int
-minimalChoices = undefined  -- TODO
--- minimalChoices = minimum . undefined
+minimalChoices [a]
+    | result < 2 = error "Should be greater than 1"
+    | otherwise = result
+    where result = minimum $ map length a
 
 expand :: Matrix [Digit] -> [ Matrix [Digit] ]
 expand matrix = [rowsBefore ++ [rowBeforeChoice ++ [c] : rowAfterChoice] ++ rowsAfter | c <- cellchoices]
